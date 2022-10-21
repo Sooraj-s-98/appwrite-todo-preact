@@ -1,7 +1,7 @@
 import { h, render } from 'preact';
 import { expect } from 'chai';
 
-import Profile from '../../../src/components/profile';
+import Profile from '../../../src/pages/profile';
 
 describe('components/Profile', () => {
 
