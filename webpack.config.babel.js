@@ -6,7 +6,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import OfflinePlugin from 'offline-plugin';
 import path from 'path';
 const ENV = process.env.NODE_ENV || 'development';
-
+const Dotenv = require('dotenv-webpack');
 const CSS_MAPS = ENV!=='production';
 
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
 			'node_modules'
 		],
 		alias: {
-			components: path.resolve(__dirname, "src/components"),    // used for tests
+			components: path.resolve(__dirname, "src/pages"),    // used for tests
 			style: path.resolve(__dirname, "src/style"),
 			'react': 'preact-compat',
 			'react-dom': 'preact-compat'
@@ -50,7 +50,7 @@ module.exports = {
 			{
 				// Transform our own .(less|css) files with PostCSS and CSS-modules
 				test: /\.(less|css)$/,
-				include: [path.resolve(__dirname, 'src/components')],
+				include: [path.resolve(__dirname, 'src/pages')],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
@@ -76,7 +76,7 @@ module.exports = {
 			},
 			{
 				test: /\.(less|css)$/,
-				exclude: [path.resolve(__dirname, 'src/components')],
+				exclude: [path.resolve(__dirname, 'src/pages')],
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
